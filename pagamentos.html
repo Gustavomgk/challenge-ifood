@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Pagamentos e Recebíveis</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        .card-header {
+            background-color: #ff0000;
+            color: white;
+        }
+        .btn-add {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="text-center">Gestão de Pagamentos e Recebíveis</h2>
+
+        <button class="btn btn-primary btn-add" data-toggle="modal" data-target="#addPaymentModal">Adicionar Novo Pagamento</button>
+
+        <div class="card">
+            <div class="card-header">Pagamentos Pendentes</div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="paymentTable">
+                        <!-- Lista de pagamentos será adicionada aqui dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Botão de Voltar -->
+        <button onclick="window.history.back()" class="btn btn-danger mt-4">Voltar</button>
+    </div>
+
+    <!-- Modal para Adicionar Novo Pagamento -->
+    <div class="modal fade" id="addPaymentModal" tabindex="-1" role="dialog" aria-labelledby="addPaymentLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addPaymentLabel">Adicionar Novo Pagamento</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="paymentForm">
+                        <div class="form-group">
+                            <label for="description">Descrição</label>
+                            <input type="text" class="form-control" id="description" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Valor</label>
+                            <input type="number" class="form-control" id="amount" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select class="form-control" id="status">
+                                <option>Pendente</option>
+                                <option>Recebido</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript para adicionar pagamentos -->
+    <script>
+        document.getElementById("paymentForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const description = document.getElementById("description").value;
+            const amount = document.getElementById("amount").value;
+            const status = document.getElementById("status").value;
+
+            const paymentTable = document.getElementById("paymentTable");
+
+            const newRow = paymentTable.insertRow();
+            newRow.innerHTML = `<td>${description}</td><td>R$ ${amount}</td><td>${status}</td><td><button class="btn btn-success btn-sm">Confirmar</button></td>`;
+
+            // Limpa o formulário e fecha o modal
+            document.getElementById("paymentForm").reset();
+            $('#addPaymentModal').modal('hide');
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8Para adicionar o botão de voltar em todas as suas páginas, aqui está o exemplo da página `Consulta de Saldo`, assim como foi feito nas outras:
+
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Saldo - iFood Parceiros</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .saldo-box {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="saldo-box text-center">
+                    <h2>Consulta de Saldo</h2>
+                    <div id="saldo-display">
+                        <p>Saldo atual do parceiro:</p>
+                        <h3 id="saldo">R$ 0,00</h3>
+                    </div>
+                    <button class="btn btn-primary" onclick="consultarSaldo()">Consultar Saldo</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão de Voltar -->
+        <div class="text-center mt-4">
+            <button onclick="window.history.back()" class="btn btn-danger">Voltar</button>
+        </div>
+    </div>
+
+    <script>
+        function consultarSaldo() {
+            // Simulação de consulta de saldo em tempo real
+            var saldo = "R$ 2.500,00";
+            document.getElementById('saldo').innerText = saldo;
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
